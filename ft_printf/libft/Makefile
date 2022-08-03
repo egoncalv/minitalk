@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: egoncalv <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/20 11:45:23 by egoncalv          #+#    #+#              #
-#    Updated: 2021/12/06 18:07:45 by egoncalv         ###   ########.fr        #
+#    Updated: 2022/08/03 13:24:11 by erickbarros      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,26 +68,20 @@ all:	$(NAME)
 
 $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
-	@echo "$(NAME) was created"
 	@ranlib $(NAME)
-	@echo "$(NAME) was indexed"
 
 %.o: %.c
 	@gcc $(FLAG) -c $< -o $@
 
 bonus: $(OBJ) $(BONUS_OBJ)
 	@ar rc $(NAME) $(OBJ) $(BONUS_OBJ)
-	@echo "$(NAME) was created with bonuses"
 	@ranlib $(NAME)
-	@echo "$(NAME) was indexed"
 
 clean:
 	@rm -f $(OBJ) $(BONUS_OBJ)
-	@echo "OBJS removed"
 
 fclean:	clean
 	@rm -f $(NAME)
-	@echo "$(NAME) removed"
 
 re:	fclean $(NAME)
 
