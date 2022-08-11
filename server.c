@@ -6,7 +6,7 @@
 /*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 12:49:51 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/08/06 04:50:24 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/08/11 20:00:31 by erickbarros      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ int	main(void)
 	newhandler.__sigaction_u.__sa_handler = &handle_sig;
 	newhandler.sa_flags = 0;
 	sigemptyset(&(newhandler.sa_mask));
-	ft_printf("Server has started. PID: %d\n", getpid());
+	ft_printf("%d\n", getpid());
 	sigaction(SIGUSR1, &newhandler, NULL);
 	sigaction(SIGUSR2, &newhandler, NULL);
 	while (1)
 		pause();
-	return (0);
 }
 
 void	handle_sig(int sig)
@@ -68,5 +67,5 @@ void	byte_convert(int byte)
 		byte /= 10;
 		i++;
 	}
-	ft_printf("%c", dec);
+	write(1, &dec, 1);
 }
