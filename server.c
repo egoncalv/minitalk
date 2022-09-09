@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
+/*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 12:49:51 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/08/11 20:00:31 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/09/09 18:11:58 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(void)
 {
 	struct sigaction	newhandler;
 
-	newhandler.__sigaction_u.__sa_handler = &handle_sig;
+	newhandler.sa_handler = &handle_sig;
 	newhandler.sa_flags = 0;
 	sigemptyset(&(newhandler.sa_mask));
 	ft_printf("%d\n", getpid());
