@@ -6,18 +6,20 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 12:49:51 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/09/09 18:11:58 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/09/10 18:41:32 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+int pid;
+
 int	main(void)
 {
 	struct sigaction	newhandler;
 
-	newhandler.sa_handler = &handle_sig;
-	newhandler.sa_flags = 0;
+	newhandler.sa_sigaction = &handle_sig;
+	newhandler.sa_flags = SA_SIGINFO;
 	sigemptyset(&(newhandler.sa_mask));
 	ft_printf("%d\n", getpid());
 	sigaction(SIGUSR1, &newhandler, NULL);
@@ -26,8 +28,10 @@ int	main(void)
 		pause();
 }
 
-void	handle_sig(int sig)
+void	handle_sig(int sig, siginfo_t *info, void *)
 {
+	pid = info->si_pid;
+	kill(info->si_pid, SIGUSR1);
 	if (sig == SIGUSR1)
 		handle_bits(0);
 	if (sig == SIGUSR2)
