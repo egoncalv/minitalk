@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 12:49:59 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/09/10 18:39:32 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/09/10 19:05:25 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char *argv[])
 		str_convert(argv[2][i], server_pid);
 		i++;
 	}
-	str_convert('\n', server_pid);
+	str_convert('\0', server_pid);
 	while (1)
 		pause();
 }
@@ -55,7 +55,7 @@ void	str_convert(int num, int server_pid)
 			kill(server_pid, SIGUSR1);
 		i--;
 		flag = 0;
-		usleep(100);
+		usleep(50);
 	}
 }
 

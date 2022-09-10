@@ -6,7 +6,7 @@
 /*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 12:49:51 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/09/10 18:41:32 by egoncalv         ###   ########.fr       */
+/*   Updated: 2022/09/10 19:16:45 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,6 @@ void	byte_convert(int byte)
 		i++;
 	}
 	write(1, &dec, 1);
+	if (dec == 256)
+		kill(pid, SIGUSR2);
 }
