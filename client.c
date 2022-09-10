@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   client.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: erickbarros <erickbarros@student.42.fr>    +#+  +:+       +#+        */
+/*   By: egoncalv <egoncalv@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 12:49:59 by erickbarros       #+#    #+#             */
-/*   Updated: 2022/08/12 00:08:43 by erickbarros      ###   ########.fr       */
+/*   Updated: 2022/09/10 15:30:41 by egoncalv         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	main(int argc, char *argv[])
 	int	server_pid;
 	int	i;
 
-	server_pid = ft_atoi(argv[1]);
 	i = 0;
 	if (argc != 3)
 		exit_error("Please inform the server´s PID and a string");
+	server_pid = ft_atoi(argv[1]);
 	while (argv[2][i])
 	{
 		str_convert(argv[2][i], server_pid);
